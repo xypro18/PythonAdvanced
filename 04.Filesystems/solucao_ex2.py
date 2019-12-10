@@ -4,9 +4,10 @@ files = []
 
 
 for x in os.walk(source):
-    if len(x[2]) != 0:
+    if len(x[2]) != 0:        
         for item in x[2]:
-            files.append(x[0] + "/" + item)
+            if item.endswith(".csv"):
+                files.append(x[0] + "/" + item)
 
 with open(destination, 'w', encoding="utf-8") as outfile:
     firstFile = True
@@ -19,4 +20,3 @@ with open(destination, 'w', encoding="utf-8") as outfile:
                 firstLine = False
         
         firstFile = False
-
